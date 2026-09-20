@@ -1,1 +1,606 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0b1728"><title>Investisseur Pro</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><div class="brand"><div class="logo">IP</div><div><h1>Investisseur <span>Pro</span></h1><p>Votre espace financier</p></div></div><button class="icon-btn" aria-label="Notifications">♢</button></header><main class="page"><section class="hero" id="top"><div class="hero-content"><span class="eyebrow">PLATEFORME INVESTISSEUR PRO</span><h2>Faites grandir votre projet, <span>étape par étape.</span></h2><p>Consultez les niveaux disponibles et gérez votre espace depuis votre téléphone.</p><div class="hero-actions"><button class="btn primary" data-scroll="products">Découvrir les offres</button><button class="btn light" data-message="La fonction Dépôt sera activée avec l’intégration de paiement.">Dépôt</button></div></div><div class="badge"><b>90</b><small>jours</small></div></section><section class="summary"><div><small>Solde disponible</small><strong>0 <em>FCFA</em></strong></div><div class="summary-grid"><div><small>Investissement</small><b>0 FCFA</b></div><div><small>Revenus</small><b>0 FCFA</b></div></div></section><section id="products" class="section"><div class="heading"><div><span class="eyebrow dark">NOS OFFRES</span><h2>Choisissez votre niveau</h2></div><span class="count">5 niveaux</span></div><div class="products"><article class="product featured"><div class="top"><b>NIVEAU 1</b><span>● Disponible</span></div><h3>3 000 <small>FCFA</small></h3><div class="details"><p>Durée <b>90 jours</b></p><p>Revenu quotidien <b>900 FCFA</b></p><p>Revenus totaux annoncés <b>81 000 FCFA</b></p></div><button data-message="Niveau 1 sélectionné.">Voir l'offre</button></article><article class="product"><div class="top"><b>NIVEAU 2</b><span>● Disponible</span></div><h3>7 000 <small>FCFA</small></h3><div class="details"><p>Durée <b>90 jours</b></p><p>Revenu quotidien <b>2 100 FCFA</b></p><p>Revenus totaux annoncés <b>189 000 FCFA</b></p></div><button data-message="Niveau 2 sélectionné.">Voir l'offre</button></article><article class="product"><div class="top"><b>NIVEAU 3</b><span>● Disponible</span></div><h3>15 000 <small>FCFA</small></h3><div class="details"><p>Durée <b>90 jours</b></p><p>Revenu quotidien <b>4 500 FCFA</b></p><p>Revenus totaux annoncés <b>405 000 FCFA</b></p></div><button data-message="Niveau 3 sélectionné.">Voir l'offre</button></article><article class="product"><div class="top"><b>NIVEAU 4</b><span>● Disponible</span></div><h3>25 000 <small>FCFA</small></h3><div class="details"><p>Durée <b>90 jours</b></p><p>Revenu quotidien <b>7 500 FCFA</b></p><p>Revenus totaux annoncés <b>675 000 FCFA</b></p></div><button data-message="Niveau 4 sélectionné.">Voir l'offre</button></article><article class="product premium"><div class="top"><b>NIVEAU 6</b><span>● Disponible</span></div><h3>45 000 <small>FCFA</small></h3><div class="details"><p>Durée <b>90 jours</b></p><p>Revenu quotidien <b>12 000 FCFA</b></p><p>Revenus totaux annoncés <b>1 080 000 FCFA</b></p></div><button data-message="Niveau 6 sélectionné.">Voir l'offre</button></article></div></section><section class="quick"><button data-message="La fonction Dépôt sera activée avec l’intégration de paiement."><b>＋ Dépôt</b><small>Ajouter des fonds</small></button><button data-message="La fonction Retrait sera configurée avec le compte utilisateur."><b>↗ Retrait</b><small>Demander un retrait</small></button><button data-message="La section Équipe sera ajoutée dans une prochaine étape."><b>♧ Équipe</b><small>Parrainage</small></button></section><section class="conditions"><strong>✓</strong><div><h3>Conditions de retrait</h3><p>Minimum <b>2 500 FCFA</b> · Frais <b>23 %</b> · Paiement prévu : <b>Wave</b></p></div></section><section class="notice"><b>Information importante</b><p>Les rendements affichés doivent être vérifiés, légalement autorisés et soutenus par une activité économique réelle avant toute mise en service.</p></section></main><nav class="bottom"><button class="active" data-scroll="top">⌂<small>Accueil</small></button><button data-scroll="products">▣<small>Produits</small></button><button data-message="La section Équipe sera ajoutée dans une prochaine étape.">♧<small>Équipe</small></button><button data-message="La section Mon compte sera ajoutée dans une prochaine étape.">◉<small>Compte</small></button></nav><div id="toast"></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Investisseur Pro</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       BARRE DU HAUT
+  ========================== -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="logo">
+        IP
+      </div>
+
+      <div>
+        <h1>
+          Investisseur <span>Pro</span>
+        </h1>
+
+        <p>
+          Votre espace investissement
+        </p>
+      </div>
+
+    </div>
+
+    <button class="icon-btn" onclick="showMessage('Bienvenue sur Investisseur Pro')">
+      🔔
+    </button>
+
+  </header>
+
+
+  <!-- =========================
+       CONTENU PRINCIPAL
+  ========================== -->
+
+  <main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          INVESTISSEZ • SUIVEZ • GÉREZ
+        </div>
+
+        <h2>
+          Construisez votre
+          <span>avenir financier</span>
+        </h2>
+
+        <p>
+          Découvrez nos différentes opportunités
+          et gérez votre espace personnel
+          simplement.
+        </p>
+
+        <div class="hero-actions">
+
+          <button
+            class="btn primary"
+            onclick="window.location.href='produits.html'">
+            Voir les produits
+          </button>
+
+          <button
+            class="btn light"
+            onclick="showMessage('Votre espace personnel sera bientôt disponible')">
+            Mon compte
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="badge">
+
+        <b>IP</b>
+
+        <small>
+          PRO
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- SOLDE -->
+
+    <section class="summary">
+
+      <small>
+        Solde disponible
+      </small>
+
+      <strong>
+        0 <em>FCFA</em>
+      </strong>
+
+      <div class="summary-grid">
+
+        <div>
+
+          <small>
+            Investissement
+          </small>
+
+          <b>
+            0 FCFA
+          </b>
+
+        </div>
+
+        <div>
+
+          <small>
+            Revenus
+          </small>
+
+          <b>
+            0 FCFA
+          </b>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUITS -->
+
+    <section class="section">
+
+      <div class="heading">
+
+        <div>
+
+          <div class="eyebrow dark">
+            NOS OFFRES
+          </div>
+
+          <h2>
+            Produits disponibles
+          </h2>
+
+        </div>
+
+        <span class="count">
+          5 niveaux
+        </span>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <!-- NIVEAU 1 -->
+
+        <article class="product">
+
+          <div class="top">
+
+            <b>
+              NIVEAU 1
+            </b>
+
+            <span>
+              ✓ Disponible
+            </span>
+
+          </div>
+
+          <h3>
+            3 000 <small>FCFA</small>
+          </h3>
+
+          <div class="details">
+
+            <p>
+              Durée
+              <b>
+                90 jours
+              </b>
+            </p>
+
+            <p>
+              Revenu quotidien
+              <b>
+                900 FCFA
+              </b>
+            </p>
+
+            <p>
+              Revenus totaux
+              <b>
+                81 000 FCFA
+              </b>
+            </p>
+
+          </div>
+
+          <button
+            onclick="window.location.href='produits.html'">
+            Voir le produit
+          </button>
+
+        </article>
+
+
+        <!-- NIVEAU 2 -->
+
+        <article class="product featured">
+
+          <div class="top">
+
+            <b>
+              NIVEAU 2
+            </b>
+
+            <span>
+              ✓ Disponible
+            </span>
+
+          </div>
+
+          <h3>
+            7 000 <small>FCFA</small>
+          </h3>
+
+          <div class="details">
+
+            <p>
+              Durée
+              <b>
+                90 jours
+              </b>
+            </p>
+
+            <p>
+              Revenu quotidien
+              <b>
+                2 100 FCFA
+              </b>
+            </p>
+
+            <p>
+              Revenus totaux
+              <b>
+                189 000 FCFA
+              </b>
+            </p>
+
+          </div>
+
+          <button
+            onclick="window.location.href='produits.html'">
+            Voir le produit
+          </button>
+
+        </article>
+
+
+        <!-- NIVEAU 3 -->
+
+        <article class="product">
+
+          <div class="top">
+
+            <b>
+              NIVEAU 3
+            </b>
+
+            <span>
+              ✓ Disponible
+            </span>
+
+          </div>
+
+          <h3>
+            15 000 <small>FCFA</small>
+          </h3>
+
+          <div class="details">
+
+            <p>
+              Durée
+              <b>
+                90 jours
+              </b>
+            </p>
+
+            <p>
+              Revenu quotidien
+              <b>
+                4 500 FCFA
+              </b>
+            </p>
+
+            <p>
+              Revenus totaux
+              <b>
+                405 000 FCFA
+              </b>
+            </p>
+
+          </div>
+
+          <button
+            onclick="window.location.href='produits.html'">
+            Voir le produit
+          </button>
+
+        </article>
+
+
+        <!-- NIVEAU 4 -->
+
+        <article class="product featured">
+
+          <div class="top">
+
+            <b>
+              NIVEAU 4
+            </b>
+
+            <span>
+              ✓ Disponible
+            </span>
+
+          </div>
+
+          <h3>
+            25 000 <small>FCFA</small>
+          </h3>
+
+          <div class="details">
+
+            <p>
+              Durée
+              <b>
+                90 jours
+              </b>
+            </p>
+
+            <p>
+              Revenu quotidien
+              <b>
+                7 500 FCFA
+              </b>
+            </p>
+
+            <p>
+              Revenus totaux
+              <b>
+                675 000 FCFA
+              </b>
+            </p>
+
+          </div>
+
+          <button
+            onclick="window.location.href='produits.html'">
+            Voir le produit
+          </button>
+
+        </article>
+
+
+        <!-- NIVEAU 6 -->
+
+        <article class="product premium">
+
+          <div class="top">
+
+            <b>
+              NIVEAU 6
+            </b>
+
+            <span>
+              ✓ Disponible
+            </span>
+
+          </div>
+
+          <h3>
+            45 000 <small>FCFA</small>
+          </h3>
+
+          <div class="details">
+
+            <p>
+              Durée
+              <b>
+                90 jours
+              </b>
+            </p>
+
+            <p>
+              Revenu quotidien
+              <b>
+                12 000 FCFA
+              </b>
+            </p>
+
+            <p>
+              Revenus totaux
+              <b>
+                1 080 000 FCFA
+              </b>
+            </p>
+
+          </div>
+
+          <button
+            onclick="window.location.href='produits.html'">
+            Voir le produit
+          </button>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACTIONS RAPIDES -->
+
+    <section class="quick">
+
+      <button
+        onclick="showMessage('Le dépôt sera disponible prochainement')">
+
+        <b>
+          💰 Dépôt
+        </b>
+
+        <small>
+          Ajouter des fonds
+        </small>
+
+      </button>
+
+
+      <button
+        onclick="showMessage('Le retrait sera disponible prochainement')">
+
+        <b>
+          💸 Retrait
+        </b>
+
+        <small>
+          Retirer vos fonds
+        </small>
+
+      </button>
+
+
+      <button
+        onclick="showMessage('Votre espace personnel sera bientôt disponible')">
+
+        <b>
+          👤 Mon compte
+        </b>
+
+        <small>
+          Gérer votre compte
+        </small>
+
+      </button>
+
+    </section>
+
+
+    <!-- CONDITIONS -->
+
+    <section class="conditions">
+
+      <strong>
+        ✓
+      </strong>
+
+      <div>
+
+        <h3>
+          Conditions de retrait
+        </h3>
+
+        <p>
+          Montant minimum : 2 500 FCFA.
+          Des frais de retrait de 23 % peuvent
+          s'appliquer selon les conditions du service.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="notice">
+
+      <b>
+        ℹ️ Information importante
+      </b>
+
+      <p>
+        Les informations présentées sur cette plateforme
+        doivent correspondre à des opérations et activités
+        économiques réelles et vérifiables. Les conditions
+        peuvent être modifiées avant la mise en service.
+      </p>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <nav class="bottom">
+
+    <button
+      class="active"
+      onclick="window.location.href='index.html'">
+
+      🏠
+
+      <small>
+        Accueil
+      </small>
+
+    </button>
+
+
+    <button
+      onclick="window.location.href='produits.html'">
+
+      📦
+
+      <small>
+        Produits
+      </small>
+
+    </button>
+
+
+    <button
+      onclick="window.location.href='equipe.html'">
+
+      👥
+
+      <small>
+        Équipe
+      </small>
+
+    </button>
+
+
+    <button
+      onclick="window.location.href='compte.html'">
+
+      👤
+
+      <small>
+        Mon compte
+      </small>
+
+    </button>
+
+  </nav>
+
+
+  <!-- MESSAGE -->
+
+  <div id="toast"></div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
