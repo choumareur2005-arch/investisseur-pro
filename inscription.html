@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Inscription - Investisseur Pro</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f7fb;
+      color: #17243a;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+      padding: 18px 14px 35px;
+    }
+
+    /* HEADER */
+
+    .header {
+      background: #0b1728;
+      color: white;
+      border-radius: 0 0 25px 25px;
+      padding: 20px 18px;
+      margin: -18px -14px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+
+      background: linear-gradient(
+        135deg,
+        #19b875,
+        #1559c7
+      );
+
+      display: grid;
+      place-items: center;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .brand h1 span {
+      color: #39cf95;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: #aebbd0;
+      font-size: 10px;
+    }
+
+    /* TITRE */
+
+    .title {
+      text-align: center;
+      margin: 25px 0 20px;
+    }
+
+    .title h2 {
+      margin: 0;
+      font-size: 27px;
+      color: #102a4b;
+    }
+
+    .title p {
+      color: #718096;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* BONUS */
+
+    .bonus {
+      background: linear-gradient(
+        135deg,
+        #eafaf4,
+        #e8f2ff
+      );
+
+      border: 1px solid #c8efdf;
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .bonus strong {
+      display: block;
+      color: #07915b;
+      font-size: 25px;
+    }
+
+    .bonus span {
+      font-size: 11px;
+      color: #59726a;
+    }
+
+    /* FORMULAIRE */
+
+    .card {
+      background: white;
+      border: 1px solid #e4eaf2;
+      border-radius: 21px;
+      padding: 19px;
+      box-shadow: 0 10px 30px #17243a0a;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 7px;
+      color: #31445d;
+    }
+
+    select,
+    input {
+      width: 100%;
+      height: 48px;
+
+      border: 1px solid #dce4ee;
+      border-radius: 12px;
+
+      padding: 0 13px;
+
+      background: #f9fbfd;
+      color: #17243a;
+
+      font-size: 13px;
+      outline: none;
+    }
+
+    select:focus,
+    input:focus {
+      border-color: #1559c7;
+      background: white;
+    }
+
+    /* TELEPHONE */
+
+    .phone-box {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 8px;
+    }
+
+    .country-code {
+      background: #edf4ff;
+      color: #1559c7;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .phone-help {
+      font-size: 9px;
+      color: #718096;
+      margin-top: 5px;
+    }
+
+    /* PARRAINAGE */
+
+    .ref-box {
+      background: #f5f8fc;
+      border: 1px dashed #cbd7e6;
+      border-radius: 12px;
+      padding: 11px;
+    }
+
+    .ref-box input {
+      background: white;
+    }
+
+    .ref-info {
+      font-size: 9px;
+      color: #718096;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* WAVE */
+
+    .payment {
+      background: #f0f8ff;
+      border: 1px solid #d4e5f7;
+      border-radius: 16px;
+      padding: 14px;
+      margin: 17px 0;
+    }
+
+    .payment-title {
+      font-size: 12px;
+      font-weight: 900;
+      color: #1559c7;
+    }
+
+    .payment p {
+      margin: 5px 0 0;
+      font-size: 10px;
+      color: #65758a;
+      line-height: 1.5;
+    }
+
+    /* CONDITIONS */
+
+    .conditions {
+      background: #fffaf0;
+      border: 1px solid #f1dfb5;
+      border-radius: 15px;
+      padding: 13px;
+      margin-bottom: 17px;
+    }
+
+    .conditions strong {
+      font-size: 11px;
+      color: #8a650e;
+    }
+
+    .conditions ul {
+      padding-left: 17px;
+      margin: 8px 0 0;
+    }
+
+    .conditions li {
+      font-size: 9px;
+      color: #75694b;
+      margin-bottom: 4px;
+    }
+
+    /* CHECKBOX */
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .check input {
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+    }
+
+    .check span {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #65758a;
+    }
+
+    /* BOUTON */
+
+    .submit {
+      width: 100%;
+      height: 50px;
+
+      border: 0;
+      border-radius: 13px;
+
+      background: linear-gradient(
+        135deg,
+        #19b875,
+        #1559c7
+      );
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .submit:active {
+      transform: scale(.98);
+    }
+
+    /* MESSAGE */
+
+    .message {
+      display: none;
+
+      margin-top: 15px;
+      padding: 12px;
+
+      border-radius: 12px;
+
+      font-size: 11px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .message.success {
+      display: block;
+      background: #eafaf4;
+      color: #08744c;
+      border: 1px solid #bcebd7;
+    }
+
+    .message.error {
+      display: block;
+      background: #fff0f0;
+      color: #a22c2c;
+      border: 1px solid #f1caca;
+    }
+
+    /* CONNEXION */
+
+    .login {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 11px;
+      color: #718096;
+    }
+
+    .login a {
+      color: #1559c7;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      text-align: center;
+      margin-top: 22px;
+      color: #9aa6b6;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="brand">
+
+      <div class="logo">
+        IP
+      </div>
+
+      <div>
+        <h1>
+          Investisseur <span>Pro</span>
+        </h1>
+
+        <p>
+          Votre espace d'investissement
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TITRE -->
+
+  <div class="title">
+
+    <h2>
+      Créer votre compte
+    </h2>
+
+    <p>
+      Inscrivez-vous pour accéder à votre espace personnel.
+    </p>
+
+  </div>
+
+
+  <!-- BONUS -->
+
+  <div class="bonus">
+
+    <strong>
+      +500 FCFA
+    </strong>
+
+    <span>
+      Bonus offert lors de la première inscription
+    </span>
+
+  </div>
+
+
+  <!-- FORMULAIRE -->
+
+  <div class="card">
+
+    <form id="registerForm">
+
+
+      <!-- PAYS -->
+
+      <div class="field">
+
+        <label for="country">
+          Pays
+        </label>
+
+        <select id="country" required>
+
+          <option value="">
+            Sélectionnez votre pays
+          </option>
+
+          <option value="senegal">
+            🇸🇳 Sénégal
+          </option>
+
+          <option value="cotedivoire">
+            🇨🇮 Côte d'Ivoire
+          </option>
+
+          <option value="mali">
+            🇲🇱 Mali
+          </option>
+
+          <option value="burkina">
+            🇧🇫 Burkina Faso
+          </option>
+
+          <option value="gambia">
+            🇬🇲 Gambie
+          </option>
+
+          <option value="uganda">
+            🇺🇬 Ouganda
+          </option>
+
+          <option value="cameroon">
+            🇨🇲 Cameroun
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- TELEPHONE -->
+
+      <div class="field">
+
+        <label for="phone">
+          Numéro de téléphone
+        </label>
+
+        <div class="phone-box">
+
+          <div
+            class="country-code"
+            id="countryCode"
+          >
+            +---
+          </div>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Votre numéro"
+            inputmode="numeric"
+            autocomplete="tel"
+            required
+          >
+
+        </div>
+
+        <div
+          class="phone-help"
+          id="phoneHelp"
+        >
+          Sélectionnez d'abord votre pays.
+        </div>
+
+      </div>
+
+
+      <!-- CODE PARRAIN -->
+
+      <div class="field">
+
+        <label for="referral">
+          Code de parrainage
+        </label>
+
+        <div class="ref-box">
+
+          <input
+            type="text"
+            id="referral"
+            placeholder="Code du parrain"
+            autocomplete="off"
+          >
+
+          <div class="ref-info">
+            Si vous avez reçu un lien d'invitation,
+            le code du parrain sera automatiquement ajouté.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- MOT DE PASSE -->
+
+      <div class="field">
+
+        <label for="password">
+          Mot de passe
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Créer un mot de passe"
+          minlength="6"
+          required
+        >
+
+      </div>
+
+
+      <!-- CONFIRMATION -->
+
+      <div class="field">
+
+        <label for="confirmPassword">
+          Confirmer le mot de passe
+        </label>
+
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirmer votre mot de passe"
+          minlength="6"
+          required
+        >
+
+      </div>
+
+
+      <!-- PAIEMENT -->
+
+      <div class="payment">
+
+        <div class="payment-title">
+          💳 Moyen de paiement
+        </div>
+
+        <p>
+          Les dépôts et retraits sont prévus uniquement
+          avec <strong>Wave</strong>.
+        </p>
+
+        <p>
+          Le service de paiement sera activé selon
+          la configuration réelle de la plateforme.
+        </p>
+
+      </div>
+
+
+      <!-- CONDITIONS -->
+
+      <div class="conditions">
+
+        <strong>
+          ℹ️ Informations importantes
+        </strong>
+
+        <ul>
+
+          <li>
+            Bonus d'inscription : 500 FCFA.
+          </li>
+
+          <li>
+            Dépôt minimum : 3 000 FCFA.
+          </li>
+
+          <li>
+            Retrait minimum : 2 500 FCFA.
+          </li>
+
+          <li>
+            Frais de retrait : 23 %.
+          </li>
+
+          <li>
+            Aucun code SMS/OTP n'est demandé lors de l'inscription.
+          </li>
+
+          <li>
+            Le numéro doit respecter le format du pays sélectionné.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- ACCEPTATION -->
+
+      <div class="check">
+
+        <input
+          type="checkbox"
+          id="terms"
+          required
+        >
+
+        <span>
+          J'accepte les conditions d'utilisation et
+          confirme que les informations fournies sont exactes.
+        </span>
+
+      </div>
+
+
+      <!-- BOUTON -->
+
+      <button
+        type="submit"
+        class="submit"
+      >
+        Créer mon compte
+      </button>
+
+
+      <!-- MESSAGE -->
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+
+    </form>
+
+  </div>
+
+
+  <!-- CONNEXION -->
+
+  <div class="login">
+
+    Vous avez déjà un compte ?
+
+    <a href="compte.html">
+      Accéder à mon compte
+    </a>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+
+    Investisseur Pro<br>
+
+    Les informations affichées sur cette page
+    ne constituent pas une garantie de rendement.
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /* =========================
+     PAYS
+  ========================= */
+
+  const country = document.getElementById("country");
+  const countryCode = document.getElementById("countryCode");
+  const phone = document.getElementById("phone");
+  const phoneHelp = document.getElementById("phoneHelp");
+
+
+  /*
+    Nombre de chiffres attendu
+    après l'indicatif international.
+  */
+
+  const countryRules = {
+
+    senegal: {
+      code: "+221",
+      digits: 9,
+      example: "Exemple : 771234567"
+    },
+
+    cotedivoire: {
+      code: "+225",
+      digits: 10,
+      example: "Exemple : 0712345678"
+    },
+
+    mali: {
+      code: "+223",
+      digits: 8,
+      example: "Exemple : 76123456"
+    },
+
+    burkina: {
+      code: "+226",
+      digits: 8,
+      example: "Exemple : 70123456"
+    },
+
+    gambia: {
+      code: "+220",
+      digits: 7,
+      example: "Exemple : 7123456"
+    },
+
+    uganda: {
+      code: "+256",
+      digits: 9,
+      example: "Exemple : 712345678"
+    },
+
+    cameroon: {
+      code: "+237",
+      digits: 9,
+      example: "Exemple : 690123456"
+    }
+
+  };
+
+
+  /* =========================
+     CHANGEMENT DE PAYS
+  ========================= */
+
+  country.addEventListener("change", function () {
+
+    const selected = countryRules[this.value];
+
+    phone.value = "";
+
+    if (!selected) {
+
+      countryCode.textContent = "+---";
+
+      phoneHelp.textContent =
+        "Sélectionnez d'abord votre pays.";
+
+      return;
+
+    }
+
+    countryCode.textContent = selected.code;
+
+    phoneHelp.textContent =
+      selected.example +
+      " — " +
+      selected.digits +
+      " chiffres.";
+
+  });
+
+
+  /* =========================
+     NUMERO : CHIFFRES SEULEMENT
+  ========================= */
+
+  phone.addEventListener("input", function () {
+
+    this.value = this.value
+      .replace(/\D/g, "");
+
+  });
+
+
+  /* =========================
+     CODE PARRAINAGE
+  ========================= */
+
+  const referral =
+    document.getElementById("referral");
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const ref =
+    urlParams.get("ref");
+
+
+  if (ref) {
+
+    referral.value = ref;
+
+    referral.readOnly = true;
+
+    referral.style.background = "#edf4ff";
+
+    referral.style.color = "#1559c7";
+
+  }
+
+
+  /* =========================
+     FORMULAIRE
+  ========================= */
+
+  const form =
+    document.getElementById("registerForm");
+
+  const message =
+    document.getElementById("message");
+
+
+  form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    message.className = "message";
+    message.textContent = "";
+
+
+    const selected =
+      countryRules[country.value];
+
+
+    /* Pays */
+
+    if (!selected) {
+
+      message.className =
+        "message error";
+
+      message.textContent =
+        "Veuillez sélectionner votre pays.";
+
+      return;
+
+    }
+
+
+    /* Téléphone */
+
+    const phoneNumber =
+      phone.value.trim();
+
+
+    if (phoneNumber.length !== selected.digits) {
+
+      message.className =
+        "message error";
+
+      message.textContent =
+        "Le numéro ne correspond pas au format attendu pour " +
+        country.options[country.selectedIndex].text +
+        ".";
+
+      phone.focus();
+
+      return;
+
+    }
+
+
+    /* Mot de passe */
+
+    const password =
+      document.getElementById("password").value;
+
+    const confirmPassword =
+      document.getElementById("confirmPassword").value;
+
+
+    if (password.length < 6) {
+
+      message.className =
+        "message error";
+
+      message.textContent =
+        "Le mot de passe doit contenir au moins 6 caractères.";
+
+      return;
+
+    }
+
+
+    if (password !== confirmPassword) {
+
+      message.className =
+        "message error";
+
+      message.textContent =
+        "Les deux mots de passe ne correspondent pas.";
+
+      return;
+
+    }
+
+
+    /* SUCCÈS FRONT-END */
+
+    message.className =
+      "message success";
+
+    message.innerHTML =
+      "✅ Inscription prête.<br><br>" +
+      "Votre compte pourra bénéficier du bonus de " +
+      "<strong>500 FCFA</strong> " +
+      "après validation de l'inscription.";
+
+
+    /*
+      IMPORTANT :
+      Cette partie ne crée pas encore
+      un véritable compte dans une base de données.
+
+      La connexion réelle, le crédit du bonus,
+      le stockage sécurisé du mot de passe
+      et les paiements devront être reliés
+      à un serveur/backend.
+    */
+
+  });
+
+</script>
+
+</body>
+</html>
