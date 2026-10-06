@@ -4,355 +4,210 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Mon compte - Investisseur Pro</title>
-
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Style basique pour les fenêtres surgissantes (modales) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center; align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #fff; color: #333;
+      padding: 20px; border-radius: 12px;
+      width: 90%; max-width: 400px;
+      position: relative;
+    }
+    .modal-content h3 { margin-top: 0; }
+    .modal-content input {
+      width: 100%; padding: 10px; margin: 8px 0;
+      border: 1px solid #ccc; border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .modal-content .close-btn {
+      position: absolute; top: 10px; right: 15px;
+      font-size: 20px; cursor: pointer; background: none; border: none;
+    }
+  </style>
 </head>
 
 <body>
 
   <header class="topbar">
-
     <div class="brand">
-
-      <div class="logo">
-        IP
-      </div>
-
+      <div class="logo">IP</div>
       <div>
-        <h1>
-          Investisseur <span>Pro</span>
-        </h1>
-
-        <p>
-          Mon espace personnel
-        </p>
+        <h1>Investisseur <span>Pro</span></h1>
+        <p>Mon espace personnel</p>
       </div>
-
     </div>
-
-    <button
-      class="icon-btn"
-      onclick="showMessage('Bienvenue dans votre compte')">
-      👤
-    </button>
-
+    <button class="icon-btn" onclick="showMessage('Bienvenue dans votre compte')">👤</button>
   </header>
-
 
   <main class="page">
 
-
     <!-- PROFIL -->
-
     <section class="hero">
-
       <div class="hero-content">
+        <div class="eyebrow">ESPACE PERSONNEL</div>
+        <h2>Bienvenue sur <span>votre compte</span></h2>
+        <p>Gérez votre profil, vos investissements, vos dépôts et vos retraits depuis cet espace.</p>
 
-        <div class="eyebrow">
-          ESPACE PERSONNEL
+        <div class="hero-actions" id="auth-buttons">
+          <button class="btn primary" onclick="openModal('login-modal')">Se connecter</button>
+          <button class="btn light" onclick="openModal('register-modal')">Créer un compte</button>
         </div>
-
-        <h2>
-          Bienvenue sur
-          <span>votre compte</span>
-        </h2>
-
-        <p>
-          Gérez votre profil, vos investissements,
-          vos dépôts et vos retraits depuis cet espace.
-        </p>
-
-        <div class="hero-actions">
-
-          <button
-            class="btn primary"
-            onclick="showMessage('La connexion sera disponible prochainement')">
-            Se connecter
-          </button>
-
-          <button
-            class="btn light"
-            onclick="showMessage('La création de compte sera disponible prochainement')">
-            Créer un compte
-          </button>
-
+        
+        <div class="hero-actions" id="user-actions" style="display: none;">
+          <button class="btn primary" onclick="logout()">Se déconnecter</button>
         </div>
-
       </div>
-
 
       <div class="badge">
-
         <b>👤</b>
-
-        <small>
-          COMPTE
-        </small>
-
+        <small>COMPTE</small>
       </div>
-
     </section>
-
 
     <!-- SOLDE -->
-
     <section class="summary">
-
-      <small>
-        Solde disponible
-      </small>
-
-      <strong>
-        0 <em>FCFA</em>
-      </strong>
+      <small>Solde disponible</small>
+      <strong><span id="solde-val">0</span> <em>FCFA</em></strong>
 
       <div class="summary-grid">
-
         <div>
-
-          <small>
-            Investi
-          </small>
-
-          <b>
-            0 FCFA
-          </b>
-
+          <small>Investi</small>
+          <b><span id="investi-val">0</span> FCFA</b>
         </div>
-
         <div>
-
-          <small>
-            Revenus
-          </small>
-
-          <b>
-            0 FCFA
-          </b>
-
+          <small>Revenus</small>
+          <b><span id="revenus-val">0</span> FCFA</b>
         </div>
-
       </div>
-
     </section>
-
 
     <!-- ACTIONS -->
-
     <section class="section">
-
       <div class="heading">
-
         <div>
-
-          <div class="eyebrow dark">
-            GESTION
-          </div>
-
-          <h2>
-            Mon espace
-          </h2>
-
+          <div class="eyebrow dark">GESTION</div>
+          <h2>Mon espace</h2>
         </div>
-
       </div>
-
 
       <div class="quick">
-
-
-        <button
-          onclick="showMessage('La fonction dépôt sera disponible prochainement')">
-
-          <b>
-            💰 Dépôt
-          </b>
-
-          <small>
-            Ajouter des fonds
-          </small>
-
+        <button onclick="openModal('depot-modal')">
+          <b>💰 Dépôt</b>
+          <small>Ajouter des fonds</small>
         </button>
 
-
-        <button
-          onclick="showMessage('La fonction retrait sera disponible prochainement')">
-
-          <b>
-            💸 Retrait
-          </b>
-
-          <small>
-            Retirer des fonds
-          </small>
-
+        <button onclick="openModal('retrait-modal')">
+          <b>💸 Retrait</b>
+          <small>Retirer des fonds</small>
         </button>
 
-
-        <button
-          onclick="showMessage('Votre historique sera disponible prochainement')">
-
-          <b>
-            📋 Historique
-          </b>
-
-          <small>
-            Voir les opérations
-          </small>
-
+        <button onclick="showMessage('Votre historique sera disponible prochainement')">
+          <b>📋 Historique</b>
+          <small>Voir les opérations</small>
         </button>
 
-
-        <button
-          onclick="showMessage('Les paramètres seront disponibles prochainement')">
-
-          <b>
-            ⚙️ Paramètres
-          </b>
-
-          <small>
-            Gérer votre compte
-          </small>
-
+        <button onclick="showMessage('Les paramètres seront disponibles prochainement')">
+          <b>⚙️ Paramètres</b>
+          <small>Gérer votre compte</small>
         </button>
-
-
       </div>
-
     </section>
-
 
     <!-- INFORMATIONS DU COMPTE -->
-
     <section class="section">
-
       <div class="heading">
-
         <div>
-
-          <div class="eyebrow dark">
-            PROFIL
-          </div>
-
-          <h2>
-            Informations
-          </h2>
-
+          <div class="eyebrow dark">PROFIL</div>
+          <h2>Informations</h2>
         </div>
-
       </div>
-
 
       <div class="notice">
-
-        <b>
-          👤 Informations personnelles
-        </b>
-
-        <p>
-          Nom : Non renseigné
-        </p>
-
-        <p>
-          Téléphone : Non renseigné
-        </p>
-
-        <p>
-          Identifiant : Non renseigné
-        </p>
-
+        <b>👤 Informations personnelles</b>
+        <p>Nom : <span id="user-name">Non renseigné</span></p>
+        <p>Téléphone : <span id="user-phone">Non renseigné</span></p>
+        <p>Email : <span id="user-email">Non renseigné</span></p>
       </div>
-
     </section>
-
 
     <!-- SÉCURITÉ -->
-
     <section class="conditions">
-
-      <strong>
-        🔒
-      </strong>
-
+      <strong>🔒</strong>
       <div>
-
-        <h3>
-          Sécurité du compte
-        </h3>
-
-        <p>
-          La connexion sécurisée, la vérification
-          du compte et la gestion des informations
-          personnelles seront activées avec le système
-          de comptes.
-        </p>
-
+        <h3>Sécurité du compte</h3>
+        <p>La connexion sécurisée et la gestion de vos fonds sont assurées par Supabase.</p>
       </div>
-
     </section>
-
 
   </main>
 
+  <!-- MODALES (FORMULAIRES) -->
+
+  <!-- Connexion -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('login-modal')">&times;</button>
+      <h3>Connexion</h3>
+      <input type="email" id="login-email" placeholder="Votre Email">
+      <input type="password" id="login-password" placeholder="Mot de passe">
+      <button class="btn primary" style="width:100%; margin-top:10px;" onclick="handleLogin()">Se connecter</button>
+    </div>
+  </div>
+
+  <!-- Inscription -->
+  <div id="register-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('register-modal')">&times;</button>
+      <h3>Créer un compte</h3>
+      <input type="text" id="reg-name" placeholder="Nom complet">
+      <input type="tel" id="reg-phone" placeholder="Numéro de téléphone">
+      <input type="email" id="reg-email" placeholder="Votre Email">
+      <input type="password" id="reg-password" placeholder="Mot de passe">
+      <button class="btn primary" style="width:100%; margin-top:10px;" onclick="handleRegister()">S'inscrire</button>
+    </div>
+  </div>
+
+  <!-- Dépôt -->
+  <div id="depot-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('depot-modal')">&times;</button>
+      <h3>Faire un Dépôt</h3>
+      <input type="number" id="depot-amount" placeholder="Montant en FCFA">
+      <button class="btn primary" style="width:100%; margin-top:10px;" onclick="handleDepot()">Valider le dépôt</button>
+    </div>
+  </div>
+
+  <!-- Retrait -->
+  <div id="retrait-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('retrait-modal')">&times;</button>
+      <h3>Faire un Retrait</h3>
+      <input type="number" id="retrait-amount" placeholder="Montant en FCFA">
+      <button class="btn primary" style="width:100%; margin-top:10px;" onclick="handleRetrait()">Valider le retrait</button>
+    </div>
+  </div>
 
   <!-- NAVIGATION -->
-
   <nav class="bottom">
-
-    <button
-      onclick="window.location.href='index.html'">
-
-      🏠
-
-      <small>
-        Accueil
-      </small>
-
-    </button>
-
-
-    <button
-      onclick="window.location.href='produits.html'">
-
-      📦
-
-      <small>
-        Produits
-      </small>
-
-    </button>
-
-
-    <button
-      onclick="window.location.href='equipe.html'">
-
-      👥
-
-      <small>
-        Équipe
-      </small>
-
-    </button>
-
-
-    <button class="active">
-
-      👤
-
-      <small>
-        Mon compte
-      </small>
-
-    </button>
-
+    <button onclick="window.location.href='index.html'">🏠 <small>Accueil</small></button>
+    <button onclick="window.location.href='produits.html'">📦 <small>Produits</small></button>
+    <button onclick="window.location.href='equipe.html'">👥 <small>Équipe</small></button>
+    <button class="active">👤 <small>Mon compte</small></button>
   </nav>
-
 
   <div id="toast"></div>
 
-
+  <!-- SDK Supabase (OBLIGATOIRE) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 
 </body>
